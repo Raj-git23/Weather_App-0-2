@@ -13,8 +13,6 @@ function Img() {
   const [temperature, setTemperature] = useState("");
   const [backgroundImage, setBackgroundImage] = useState(""); // State to store background image URL
 
-  console.log(import.meta.env.VITE_REACT_APP_KEY);
-
   useEffect(() => {
     if (weather) {
       // Update state with weather data from context
