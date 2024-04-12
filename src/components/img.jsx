@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useWeather } from "../contextApi/weatherContext"; // Import the useWeather hook
 import axios from "axios";
-import apiKeys from './apiKeys';
 import cardImage from '../image/card_img.jpg';
 
 function Img() {
@@ -14,6 +13,8 @@ function Img() {
   const [temperature, setTemperature] = useState("");
   const [backgroundImage, setBackgroundImage] = useState(""); // State to store background image URL
 
+  console.log(import.meta.env.VITE_REACT_APP_KEY);
+
   useEffect(() => {
     if (weather) {
       // Update state with weather data from context
@@ -24,7 +25,7 @@ function Img() {
       // Fetch timezone information based on city's coordinates
       axios
         .get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${weather.coord.lat}&lon=${weather.coord.lon}&appid=${apiKeys.key}`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${weather.coord.lat}&lon=${weather.coord.lon}&appid=${import.meta.env.VITE_REACT_APP_KEY}`
         )
         .then((response) => {
           const timezoneOffsetSeconds = response.data.timezone; // Timezone offset in seconds
